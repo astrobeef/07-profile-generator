@@ -1,0 +1,25 @@
+{
+  "name": "07-profile-generator",
+  "version": "1.0.0",
+  "description": "Profile generator for github accouts",
+  "main": "index.js",
+  "dependencies": {
+    "@octokit/rest": "^16.34.1",
+    "github": "^14.0.0",
+    "inquirer": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astrobeef/07-profile-generator.git"
+  },
+  "author": "Brian Graf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astrobeef/07-profile-generator/issues"
+  },
+  "homepage": "https://github.com/astrobeef/07-profile-generator#readme"
+}
