@@ -14,9 +14,10 @@ const octokit = Octokit({
 const user = {
     img_src: "http://placehold.jp/200x200.png",
     username: "test name",
-    github : " ",
-    location : " ",
-    blog : " ",
+    name: "name",
+    github: " ",
+    location: " ",
+    blog: " ",
     bio: "test bio",
     repository_count: 0,
     follower_count: 0,
@@ -26,7 +27,7 @@ const user = {
 
 var data;
 
-let template = readFile("index_template.html", "utf8", function(err){if(err)throw(err)});
+var template = "--";
 
 function replacePlaceholder(template, target, value) {
     console.log("-Replacing placeholder, " + target + ", with the value of " + value);
@@ -37,8 +38,16 @@ function replacePlaceholder(template, target, value) {
     return newTemplate;
 }
 
+readFile("./index_template.html", "utf8").then(pTemplate => {
+
+    template = pTemplate;
+
+    getData();
+})
+
 async function getData() {
     console.log("-Fetching user data...");
+
     data = await octokit.users.getByUsername(
         {
             username: "astrobeef"
@@ -47,6 +56,7 @@ async function getData() {
 
     data = data.data;
 
+    user.name = data.name;
     user.username = data.login;
     user.bio = data.bio;
     user.follower_count = data.followers;
@@ -75,5 +85,3 @@ function generateHTML() {
     console.log("-----------------------------------")
 
 }
-
-getData();
